@@ -6,8 +6,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 @Entity
 public class UserOrder {
     @Id
@@ -16,11 +19,11 @@ public class UserOrder {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private GroceryUser user;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "item_id")
-    private GroceryItem item;
+    private List<GroceryItem> items;
 
     private int quantity;
 
